@@ -1,0 +1,11 @@
+---
+- name: ansible_demo
+  hosts: all
+  user: root
+  tasks:
+    - name: "instalacion de paquetes"
+      apt:
+         pkg: ['links', 'fail2ban','apache2','mysql-server','nginx']
+    - name: "Update all packages to the latest version"
+      apt:
+        upgrade: true
