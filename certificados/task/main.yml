@@ -1,0 +1,12 @@
+---
+- name: config
+  hosts: all
+  user: root
+  tasks:
+    - name: "asignar nombre de host"
+      shell: hostname ansibleDemo
+
+
+- include: enviar_apaches.yml
+- include: enviar_ssl.yml
+- include: activar_servicios.yml
