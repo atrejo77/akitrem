@@ -1,0 +1,25 @@
+---
+- name: config
+  hosts: all
+  user: root
+  tasks:
+    - name: "enviar .conf"
+      synchronize:
+       src: /etc/ansible/roles/certificados/files/ssl-params.conf
+       dest: /etc/apache2/conf-available/
+
+    - name: "copia y mueve"
+      shell: cp /etc/apache2/sites-available/default-ssl.conf /home/
+
+    - name: "enviar"
+      synchronize:
+       src: /etc/ansible/roles/certificados/files/default-ssl.conf
+       dest: /etc/apache2/sites-available/
+
+    - name: "copiar y mover"
+      shell: cp /etc/apache2/sites-available/000-default.conf /home/
+
+    - name: "enviar"
+      synchronize:
+       src: /etc/ansible/roles/certificados/files/000-default.conf
+       dest: /etc/apache2/sites-available/
