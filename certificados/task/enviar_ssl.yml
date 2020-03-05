@@ -1,0 +1,14 @@
+---
+- name: config
+  hosts: all
+  user: root
+  tasks:
+    - name: "enviar el .key"
+      synchronize:
+       src: /etc/ansible/roles/certificados/files/apache-selfsigned.key
+       dest: /etc/ssl/private/
+
+    - name: "enviar .crt"
+      synchronize:
+       src: /etc/ansible/roles/certificados/files/apache-selfsigned.crt
+       dest: /etc/ssl/certs/
