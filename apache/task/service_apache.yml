@@ -1,0 +1,13 @@
+---
+- name: verificar
+  hosts: all
+  user: root
+  tasks:
+    - name: "service_apache"
+      service:
+        name: apache2
+        enabled: true
+    - name: "service_apache"
+      file:
+        path: /etc/apache2
+        state: directory
