@@ -1,0 +1,4 @@
+- include: apache_install.yml
+- include: service_apache.yml
+- include: configuracion.yml
+- include: reload_apache.yml
