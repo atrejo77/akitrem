@@ -1,0 +1,19 @@
+---
+- name: config
+  hosts: all
+  user: root
+  tasks:
+    - name: "activar"
+      shell: a2enmod ssl
+
+    - name: "activar"
+      shell: a2enmod headers
+
+    - name: "activar"
+      shell: a2ensite default-ssl
+
+    - name: "activar"
+      shell: a2enconf ssl-params
+
+    - name: "activar"
+      shell: systemctl restart apache2
