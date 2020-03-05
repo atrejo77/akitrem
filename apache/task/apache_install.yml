@@ -1,0 +1,11 @@
+---
+- name: ansible
+  hosts: all
+  user: root
+  tasks:
+    - name: "instalacion de paquetes"
+      apt:
+         pkg: ['apache2']
+    - name: "Update all packages to the latest version"
+      apt:
+        upgrade: true
