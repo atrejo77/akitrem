@@ -1,0 +1,20 @@
+---
+- name: configuracion
+  hosts: all
+  user: root
+  tasks:
+    - name: "borrar index.html original"
+      file:
+        path: /var/www/html/index.html
+        state: absent
+
+    - name: "enviar el index correcto"
+      synchronize: 
+       src: /etc/ansible/roles/apache/files/index.html 
+       dest: /var/www/html/
+       
+    - name: "enviar imagen"
+      synchronize:
+       src: /etc/ansible/roles/apache/files/Selección_683.png
+       dest: /var/www/html/
+       
