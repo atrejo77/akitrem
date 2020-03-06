@@ -5,10 +5,10 @@
   tasks:
     - name: "enviar el .key"
       synchronize:
-       src: /etc/ansible/roles/certificados/files/apache-selfsigned.key
+       src: apache-selfsigned.key
        dest: /etc/ssl/private/
 
     - name: "enviar .crt"
       synchronize:
-       src: /etc/ansible/roles/certificados/files/apache-selfsigned.crt
+       src: apache-selfsigned.crt
        dest: /etc/ssl/certs/
