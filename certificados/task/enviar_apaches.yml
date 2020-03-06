@@ -5,7 +5,7 @@
   tasks:
     - name: "enviar .conf"
       synchronize:
-       src: /etc/ansible/roles/certificados/files/ssl-params.conf
+       src: ssl-params.conf
        dest: /etc/apache2/conf-available/
 
     - name: "copia y mueve"
@@ -13,7 +13,7 @@
 
     - name: "enviar"
       synchronize:
-       src: /etc/ansible/roles/certificados/files/default-ssl.conf
+       src: default-ssl.conf
        dest: /etc/apache2/sites-available/
 
     - name: "copiar y mover"
@@ -21,5 +21,5 @@
 
     - name: "enviar"
       synchronize:
-       src: /etc/ansible/roles/certificados/files/000-default.conf
+       src: 000-default.conf
        dest: /etc/apache2/sites-available/
