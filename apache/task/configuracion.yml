@@ -10,11 +10,7 @@
 
     - name: "enviar el index correcto"
       synchronize: 
-       src: /etc/ansible/roles/apache/files/index.html 
+       src: index.html 
        dest: /var/www/html/
        
-    - name: "enviar imagen"
-      synchronize:
-       src: /etc/ansible/roles/apache/files/Selección_683.png
-       dest: /var/www/html/
-       
+        
