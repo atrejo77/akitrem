@@ -1,0 +1,16 @@
+---
+- name: Execute the Blogpost demo tasks
+  hosts: localhost
+  tasks:
+
+  - name: Create server instance
+    os_server:
+      state: present
+      name: atrejoansible
+      image: c60877a1-e7cb-48ad-97b3-143a8e87e808
+      flavor: 56b659b2-cd14-45d8-8326-b0f705b626bb
+      security_groups: 6d53406a-78d1-4c85-a260-36e39f9b623e
+      key_name: id_rsa
+      nics:
+        - net-id: 40128f87-4009-4599-a0b6-cdf237842c43
+    register: atrejoansible
