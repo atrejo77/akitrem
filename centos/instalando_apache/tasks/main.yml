@@ -1,0 +1,4 @@
+- include: instalar_epel.yml
+- include: apache_install.yml
+- include: configuracion.yml
+- include: reload.yml
