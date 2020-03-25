@@ -1,0 +1,15 @@
+---
+- name: configuracion
+  hosts: all
+  remote_user: cloud-user
+  become: true
+  tasks:
+    - name: "borrar index.html original"
+      file:
+        path: /usr/share/nginx/html/index.html
+        state: absent
+
+    - name: "enviar el index correcto"
+      synchronize:
+       src: /etc/ansible/roles/apache/files/index.html
+       dest: /usr/share/nginx/html/
