@@ -1,0 +1,8 @@
+---
+- name: config
+  hosts: all
+  remote_user: cloud-user
+  become: true
+  tasks:
+    - name: "crear archivo pem"
+      shell: openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
