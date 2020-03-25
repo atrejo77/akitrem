@@ -1,0 +1,10 @@
+---
+- name: config
+  hosts: all
+  remote_user: cloud-user
+  become: true
+  tasks:
+    - name: "verificar nginx"
+      shell: nginx -t
+    - name: "reiniciar nginx"
+      shell: systemctl restart nginx
