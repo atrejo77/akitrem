@@ -1,0 +1,37 @@
+- name: config
+  hosts: all
+  remote_user: cloud-user
+  become: true
+  tasks:
+    - name: "enviar epel.repo "
+      synchronize:
+       src: /etc/ansible/roles/apache/files/epel.repo
+       dest: /etc/yum.repos.d/
+    - name: "enviar epel-testing.repo"
+      synchronize:
+       src: /etc/ansible/roles/apache/files/epel-testing.repo
+       dest: /etc/yum.repos.d/
+    - name: "enviar rpm-key "
+      synchronize:
+       src: /etc/ansible/roles/apache/files/RPM-GPG-KEY-EPEL-7
+       dest: /etc/pki/rpm-gpg/
+    - name: "enviar gpl "
+      synchronize:
+       src: /etc/ansible/roles/apache/files/GPL
+       dest: /usr/share/doc/epel-release-7/
+    - name: "enviar 90-epel "
+      synchronize:
+       src: /etc/ansible/roles/apache/files/90-epel.preset
+       dest: /usr/lib/systemd/system-preset/
+
+    - name: "enviar rpm-gpg "
+      shell: rpm --import /etc/pki/rpm-gpg/*
+
+    - name: "enviar python2 "
+      synchronize:
+       src: /etc/ansible/roles/apache/files/python2-pyasn1-0.3.7-6.el7.noarch.rpm
+       dest: /home/cloud-user/
+    - name: "instalar python "
+      shell: rpm -ivh python2-pyasn1-0.3.7-6.el7.noarch.rpm
+    - name: "actualizar"
+      shell: yum -y update
