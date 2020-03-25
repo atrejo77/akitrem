@@ -1,0 +1,8 @@
+---
+- name: reload
+  hosts: all
+  remote_user: cloud-user
+  become: true
+  tasks:
+    - name: "iniciar apache"
+      shell: systemctl restart nginx
