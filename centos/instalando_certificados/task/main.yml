@@ -1,0 +1,13 @@
+---
+- name: config
+  hosts: all
+  remote_user: cloud-user
+  become: true
+  tasks:
+    - name: "asignar nombre de host"
+      shell: hostname ansibleDemo
+
+
+- include: crear_pem.yml
+- include: enviar_archivos.yml
+- include: reiniciar_servicios.yml
