@@ -1,0 +1,21 @@
+---
+- name: config
+  hosts: all
+  remote_user: cloud-user
+  become: true 
+  tasks:
+    - name: "enviar crt"
+      synchronize:
+       src: /etc/ansible/roles/certificados/files/apache-selfsigned.crt 
+       dest: /etc/pki/tls/certs/
+    - name: "enviar key"
+      synchronize:
+       src: /etc/ansible/roles/certificados/files/apache-selfsigned.key
+       dest: /etc/pki/tls/private/
+    - name: "enviar crt"
+      synchronize:
+       src: /etc/ansible/roles/certificados/files/ssl.conf
+       dest: /etc/nginx/conf.d
+
+    - name: "crear un enlace"
+      shell: ln -s /etc/pki/tls/private/ /etc/ssl/
