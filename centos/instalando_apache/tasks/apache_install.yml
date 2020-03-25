@@ -1,0 +1,16 @@
+---
+- name: ansible
+  hosts: all
+  remote_user: cloud-user
+  become: true
+  tasks:
+    - name: "enviar el repo de nginx"
+      synchronize:
+       src: /etc/ansible/roles/apache/files/nginx.repo
+       dest: /etc/yum.repos.d/
+    - name: "usando instalando nginx"
+      shell: yum -y install nginx    
+    - name: "habilitar apache" 
+      shell: systemctl enable nginx 
+    - name: "iniciar apache"
+      shell: systemctl start nginx
